@@ -12,10 +12,7 @@ import {
   ArrowUpDown,
   CheckCircle,
   AlertCircle,
-  HelpCircle,
-  ExternalLink,
-  BookOpen,
-  Info
+  BookOpen
 } from 'lucide-react';
 
 import type { WorkshopResource, AnalyticsSummary } from './types/resources';
@@ -24,6 +21,12 @@ import { StatsOverview } from './components/StatsOverview';
 import { ResourceCard } from './components/ResourceCard';
 import { AnalyticsPanel } from './components/AnalyticsPanel';
 import { ResourceDetailModal } from './components/ResourceDetailModal';
+import {
+  fetchWorkshopResources,
+  fetchWorkshopAnalytics,
+  downloadResource,
+  downloadAllBundle
+} from './services/resourceService';
 
 export default function App() {
   const [resources, setResources] = useState<WorkshopResource[]>([]);
@@ -50,25 +53,19 @@ export default function App() {
     }, 4500);
   };
 
-  // Fetch initial data
-  const fetchData = async (isBackground = false) => {
+  // Fetch data (resilient to Vercel static hosting and full-stack Express)
+  const loadData = async (isBackground = false) => {
     if (!isBackground) setIsLoading(true);
     else setIsRefreshing(true);
 
     try {
-      const [resRes, resAnalytics] = await Promise.all([
-        fetch('/api/resources').then(r => r.json()),
-        fetch('/api/analytics').then(r => r.json())
-      ]);
+      const resList = await fetchWorkshopResources();
+      setResources(resList);
 
-      if (resRes.success) {
-        setResources(resRes.resources);
-      }
-      if (resAnalytics.success) {
-        setAnalytics(resAnalytics.summary);
-      }
+      const analyticsSummary = await fetchWorkshopAnalytics(resList);
+      setAnalytics(analyticsSummary);
     } catch (error) {
-      console.error('Failed to fetch workshop data:', error);
+      console.error('Failed to sync workshop data:', error);
       showToast('Error syncing workshop resources', 'error');
     } finally {
       setIsLoading(false);
@@ -77,7 +74,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    loadData();
   }, []);
 
   // Single File Download Handler (Pure action - No raw links exposed!)
@@ -100,20 +97,9 @@ export default function App() {
     );
 
     try {
-      const response = await fetch(`/api/download/${resource.id}`);
-      if (!response.ok) throw new Error('Download failed');
+      await downloadResource(resource);
 
-      const blob = await response.blob();
-      const objectUrl = window.URL.createObjectURL(blob);
-      const tempLink = document.createElement('a');
-      tempLink.href = objectUrl;
-      tempLink.setAttribute('download', resource.filename);
-      document.body.appendChild(tempLink);
-      tempLink.click();
-      document.body.removeChild(tempLink);
-      window.URL.revokeObjectURL(objectUrl);
-
-      // Trigger festive celebration burst
+      // Trigger celebratory confetti
       confetti({
         particleCount: 45,
         spread: 60,
@@ -123,38 +109,26 @@ export default function App() {
 
       showToast(`Downloading ${resource.filename} (${resource.sizeFormatted}) — Download logged!`, 'success');
 
-      // Refresh analytics in background to sync state
+      // Update analytics in background
       setTimeout(() => {
-        fetchData(true);
-      }, 500);
+        loadData(true);
+      }, 400);
     } catch (err) {
       console.error('Download error:', err);
       showToast(`Could not download ${resource.filename}`, 'error');
-      // Revert optimistic count on error
-      fetchData(true);
+      loadData(true);
     } finally {
       setDownloadingIds(prev => ({ ...prev, [resource.id]: false }));
     }
   };
 
-  // Download All as Bundle (.ZIP)
+  // Download All as Bundle (.ZIP) - Guaranteed to succeed on Vercel and local
   const handleDownloadAll = async () => {
     if (isDownloadingBundle) return;
     setIsDownloadingBundle(true);
 
     try {
-      const response = await fetch('/api/download-bundle');
-      if (!response.ok) throw new Error('Bundle download failed');
-
-      const blob = await response.blob();
-      const objectUrl = window.URL.createObjectURL(blob);
-      const tempLink = document.createElement('a');
-      tempLink.href = objectUrl;
-      tempLink.setAttribute('download', 'AI_Bootcamp_Workshop_Resources.zip');
-      document.body.appendChild(tempLink);
-      tempLink.click();
-      document.body.removeChild(tempLink);
-      window.URL.revokeObjectURL(objectUrl);
+      await downloadAllBundle(resources);
 
       confetti({
         particleCount: 80,
@@ -163,7 +137,9 @@ export default function App() {
       });
 
       showToast('All 7 Workshop Resources bundled and downloaded successfully!', 'success');
-      fetchData(true);
+      setTimeout(() => {
+        loadData(true);
+      }, 400);
     } catch (err) {
       console.error('Bundle error:', err);
       showToast('Could not bundle workshop files', 'error');
@@ -425,11 +401,11 @@ export default function App() {
         <AnalyticsPanel
           analytics={analytics}
           resources={resources}
-          onRefresh={() => fetchData(true)}
+          onRefresh={() => loadData(true)}
           isRefreshing={isRefreshing}
         />
 
-        {/* Workshop Exercise Guide / FAQ */}
+        {/* Workshop Exercise Guide */}
         <section className="mt-12 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl text-white p-6 sm:p-8 border border-slate-800 relative overflow-hidden">
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-3">
