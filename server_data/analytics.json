@@ -1,0 +1,304 @@
+{
+  "counts": {
+    "sourcing-supplier-quotes": 66,
+    "google-ai-studio-prompt": 60,
+    "lovable-spreadsheet-headers": 43,
+    "lovable-prompt": 48,
+    "dashboard-eng-projects": 54,
+    "claude-connector-questions": 60,
+    "claude-html-dashboard-prompt": 50
+  },
+  "lastDownloaded": {
+    "sourcing-supplier-quotes": "2026-10-23T14:06:23.644Z",
+    "google-ai-studio-prompt": "2026-10-23T14:07:02.498Z",
+    "lovable-spreadsheet-headers": "2026-10-23T14:06:23.645Z",
+    "lovable-prompt": "2026-10-23T14:06:23.645Z",
+    "dashboard-eng-projects": "2026-10-23T14:06:23.645Z",
+    "claude-connector-questions": "2026-10-23T14:06:23.646Z",
+    "claude-html-dashboard-prompt": "2026-10-23T14:06:23.646Z"
+  },
+  "events": [
+    {
+      "id": "evt-1792764422498-azbsj",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T14:07:02.498Z",
+      "deviceType": "Desktop",
+      "isBundle": false
+    },
+    {
+      "id": "evt-1792764383646-tlu3e",
+      "resourceId": "claude-html-dashboard-prompt",
+      "filename": "Claude_HTML_Dashboard_Prompt.docx",
+      "timestamp": "2026-10-23T14:06:23.646Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383646-rp4pu",
+      "resourceId": "claude-connector-questions",
+      "filename": "Claude_Connector_Supplier_Quotes_Questions.docx",
+      "timestamp": "2026-10-23T14:06:23.646Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383646-c55ph",
+      "resourceId": "dashboard-eng-projects",
+      "filename": "Dashboard_Eng_Projects.xlsx",
+      "timestamp": "2026-10-23T14:06:23.645Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383645-066p7",
+      "resourceId": "lovable-prompt",
+      "filename": "Lovable_Prompt.docx",
+      "timestamp": "2026-10-23T14:06:23.645Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383645-5eqbn",
+      "resourceId": "lovable-spreadsheet-headers",
+      "filename": "Lovable_Landing_Page_Spreadsheet_Headers.xlsx",
+      "timestamp": "2026-10-23T14:06:23.645Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383644-w2lxv",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T14:06:23.644Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383644-8roxc",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T14:06:23.644Z",
+      "deviceType": "Desktop",
+      "isBundle": true
+    },
+    {
+      "id": "evt-1792764383639-2y4wk",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T14:06:23.639Z",
+      "deviceType": "Desktop",
+      "isBundle": false
+    },
+    {
+      "id": "evt-1792764374009-0",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T14:02:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-1",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T14:01:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-2",
+      "resourceId": "lovable-spreadsheet-headers",
+      "filename": "Lovable_Landing_Page_Spreadsheet_Headers.xlsx",
+      "timestamp": "2026-10-23T13:56:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-3",
+      "resourceId": "lovable-prompt",
+      "filename": "Lovable_Prompt.docx",
+      "timestamp": "2026-10-23T13:55:14.009Z",
+      "deviceType": "Mobile"
+    },
+    {
+      "id": "evt-1792764374009-4",
+      "resourceId": "dashboard-eng-projects",
+      "filename": "Dashboard_Eng_Projects.xlsx",
+      "timestamp": "2026-10-23T13:50:14.009Z",
+      "deviceType": "Tablet"
+    },
+    {
+      "id": "evt-1792764374009-5",
+      "resourceId": "claude-connector-questions",
+      "filename": "Claude_Connector_Supplier_Quotes_Questions.docx",
+      "timestamp": "2026-10-23T13:49:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-6",
+      "resourceId": "claude-html-dashboard-prompt",
+      "filename": "Claude_HTML_Dashboard_Prompt.docx",
+      "timestamp": "2026-10-23T13:48:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-7",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T13:44:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-8",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T13:42:14.009Z",
+      "deviceType": "Mobile"
+    },
+    {
+      "id": "evt-1792764374009-9",
+      "resourceId": "lovable-spreadsheet-headers",
+      "filename": "Lovable_Landing_Page_Spreadsheet_Headers.xlsx",
+      "timestamp": "2026-10-23T13:38:14.009Z",
+      "deviceType": "Tablet"
+    },
+    {
+      "id": "evt-1792764374009-10",
+      "resourceId": "lovable-prompt",
+      "filename": "Lovable_Prompt.docx",
+      "timestamp": "2026-10-23T13:33:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-11",
+      "resourceId": "dashboard-eng-projects",
+      "filename": "Dashboard_Eng_Projects.xlsx",
+      "timestamp": "2026-10-23T13:32:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-12",
+      "resourceId": "claude-connector-questions",
+      "filename": "Claude_Connector_Supplier_Quotes_Questions.docx",
+      "timestamp": "2026-10-23T13:29:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-13",
+      "resourceId": "claude-html-dashboard-prompt",
+      "filename": "Claude_HTML_Dashboard_Prompt.docx",
+      "timestamp": "2026-10-23T13:27:14.009Z",
+      "deviceType": "Mobile"
+    },
+    {
+      "id": "evt-1792764374009-14",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T13:24:14.009Z",
+      "deviceType": "Tablet"
+    },
+    {
+      "id": "evt-1792764374009-15",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T13:17:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-16",
+      "resourceId": "lovable-spreadsheet-headers",
+      "filename": "Lovable_Landing_Page_Spreadsheet_Headers.xlsx",
+      "timestamp": "2026-10-23T13:14:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-17",
+      "resourceId": "lovable-prompt",
+      "filename": "Lovable_Prompt.docx",
+      "timestamp": "2026-10-23T13:15:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-18",
+      "resourceId": "dashboard-eng-projects",
+      "filename": "Dashboard_Eng_Projects.xlsx",
+      "timestamp": "2026-10-23T13:10:14.009Z",
+      "deviceType": "Mobile"
+    },
+    {
+      "id": "evt-1792764374009-19",
+      "resourceId": "claude-connector-questions",
+      "filename": "Claude_Connector_Supplier_Quotes_Questions.docx",
+      "timestamp": "2026-10-23T13:07:14.009Z",
+      "deviceType": "Tablet"
+    },
+    {
+      "id": "evt-1792764374009-20",
+      "resourceId": "claude-html-dashboard-prompt",
+      "filename": "Claude_HTML_Dashboard_Prompt.docx",
+      "timestamp": "2026-10-23T13:06:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-21",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T13:00:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-22",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T12:56:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-23",
+      "resourceId": "lovable-spreadsheet-headers",
+      "filename": "Lovable_Landing_Page_Spreadsheet_Headers.xlsx",
+      "timestamp": "2026-10-23T12:55:14.009Z",
+      "deviceType": "Mobile"
+    },
+    {
+      "id": "evt-1792764374009-24",
+      "resourceId": "lovable-prompt",
+      "filename": "Lovable_Prompt.docx",
+      "timestamp": "2026-10-23T12:51:14.009Z",
+      "deviceType": "Tablet"
+    },
+    {
+      "id": "evt-1792764374009-25",
+      "resourceId": "dashboard-eng-projects",
+      "filename": "Dashboard_Eng_Projects.xlsx",
+      "timestamp": "2026-10-23T12:47:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-26",
+      "resourceId": "claude-connector-questions",
+      "filename": "Claude_Connector_Supplier_Quotes_Questions.docx",
+      "timestamp": "2026-10-23T12:48:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-27",
+      "resourceId": "claude-html-dashboard-prompt",
+      "filename": "Claude_HTML_Dashboard_Prompt.docx",
+      "timestamp": "2026-10-23T12:45:14.009Z",
+      "deviceType": "Desktop"
+    },
+    {
+      "id": "evt-1792764374009-28",
+      "resourceId": "sourcing-supplier-quotes",
+      "filename": "Sourcing_Supplier_Quotes.xlsx",
+      "timestamp": "2026-10-23T12:39:14.009Z",
+      "deviceType": "Mobile"
+    },
+    {
+      "id": "evt-1792764374009-29",
+      "resourceId": "google-ai-studio-prompt",
+      "filename": "Google_AI_Studio_Prompt.docx",
+      "timestamp": "2026-10-23T12:38:14.009Z",
+      "deviceType": "Tablet"
+    }
+  ]
+}

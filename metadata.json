@@ -1,0 +1,6 @@
+{
+  "name": "AI & Engineering Bootcamp - Workshop Resources",
+  "description": "Interactive resource hub and download portal for the AI & Engineering Analytics Bootcamp with live download analytics and secure file distribution.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
