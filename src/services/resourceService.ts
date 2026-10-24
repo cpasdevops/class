@@ -113,8 +113,8 @@ export const STATIC_RESOURCES_CONFIG: Omit<WorkshopResource, 'downloadCount' | '
       'Question 5: Buyer workload and monthly quote submission trends',
       'Best practice tips for interacting with Google Drive connector spreadsheets'
     ],
-    sizeBytes: 24082,
-    sizeFormatted: '24.1 KB',
+    sizeBytes: 21255,
+    sizeFormatted: '21.3 KB',
     tags: ['DOCX', 'Claude', 'Google Drive Connector', 'Scatter Plot', 'Procurement Analysis', 'Charts']
   },
   {
@@ -219,15 +219,15 @@ function saveStoredEvents(events: DownloadEvent[]) {
   }
 }
 
-// Helper to convert base64 to Blob
+// Helper to convert base64 to Blob cleanly
 function base64ToBlob(base64: string, contentType: string): Blob {
-  const byteCharacters = atob(base64);
-  const byteNumbers = new Array(byteCharacters.length);
+  const cleanBase64 = base64.replace(/\s+/g, '');
+  const byteCharacters = window.atob(cleanBase64);
+  const bytes = new Uint8Array(byteCharacters.length);
   for (let i = 0; i < byteCharacters.length; i++) {
-    byteNumbers[i] = byteCharacters.charCodeAt(i);
+    bytes[i] = byteCharacters.charCodeAt(i);
   }
-  const byteArray = new Uint8Array(byteNumbers);
-  return new Blob([byteArray], { type: contentType });
+  return new Blob([bytes.buffer], { type: contentType });
 }
 
 // Trigger browser download via object URL (clean in-memory Blob, no external URLs)
