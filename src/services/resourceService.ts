@@ -382,39 +382,46 @@ function recordLocalDownload(resourceId: string, filename: string, isBundle = fa
   saveStoredEvents(events);
 }
 
-// 4. Download Single File (Attempts server API, seamlessly falls back to embedded file)
+// 4. Download Single File (Using the exact same JSZip engine that works on bundle zip)
 export async function downloadResource(resource: WorkshopResource): Promise<void> {
-  const contentType = resource.format === 'xlsx'
-    ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-
   // Record local tracking immediately
   recordLocalDownload(resource.id, resource.filename);
 
-  // Attempt 1: Server download endpoint (if running full-stack)
+  // Strategy 1 (Primary): Use JSZip binary unpacker directly from embedded data (identical to bundle zip)
+  const b64 = EMBEDDED_FILES[resource.filename];
+  if (b64) {
+    try {
+      const zip = new JSZip();
+      zip.file(resource.filename, b64, { base64: true });
+      const file = zip.file(resource.filename);
+      if (file) {
+        const blob = await file.async('blob');
+        triggerBlobDownload(blob, resource.filename);
+        return;
+      }
+    } catch (e) {
+      console.warn('JSZip unpack error, trying next strategy:', e);
+    }
+  }
+
+  // Strategy 2: Fetch static asset directly from public folder (ensure NOT HTML rewrite!)
   try {
-    const res = await fetch(`/api/download/${resource.id}`);
-    if (res.ok) {
+    const res = await fetch(`/_internal_workshop_assets/${encodeURIComponent(resource.filename)}`);
+    const cType = res.headers.get('content-type') || '';
+    if (res.ok && !cType.includes('text/html')) {
       const blob = await res.blob();
       triggerBlobDownload(blob, resource.filename);
       return;
     }
   } catch {
-    // Server endpoint not reachable (Vercel static)
+    // ignore
   }
 
-  // Attempt 2: Embedded file in bundle (100% reliable on Vercel)
-  const base64Data = EMBEDDED_FILES[resource.filename];
-  if (base64Data) {
-    const blob = base64ToBlob(base64Data, contentType);
-    triggerBlobDownload(blob, resource.filename);
-    return;
-  }
-
-  // Attempt 3: Public static asset fallback
+  // Strategy 3: Server download endpoint (strictly verifying response is NOT an HTML SPA rewrite)
   try {
-    const res = await fetch(`/_internal_workshop_assets/${encodeURIComponent(resource.filename)}`);
-    if (res.ok) {
+    const res = await fetch(`/api/download/${resource.id}`);
+    const cType = res.headers.get('content-type') || '';
+    if (res.ok && !cType.includes('text/html')) {
       const blob = await res.blob();
       triggerBlobDownload(blob, resource.filename);
       return;

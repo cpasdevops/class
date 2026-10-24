@@ -1,5 +1,7 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/_internal_workshop_assets/(.*)", "destination": "/_internal_workshop_assets/$1" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/((?!_internal_workshop_assets|api|assets|.*\\..*).*)", "destination": "/index.html" }
   ]
 }
